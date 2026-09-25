@@ -4,7 +4,7 @@ import { defineApp } from "rwsdk/worker";
 import { Document } from "@/app/document";
 import { setCommonHeaders } from "@/app/headers";
 import { Home } from "@/app/pages/home";
-import {Games} from "@/app/components/games"; // importert Games
+import {Games} from "@/app/components/Games"; // importert Games
 
 export type AppContext = {};
 
