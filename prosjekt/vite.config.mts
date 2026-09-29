@@ -6,7 +6,6 @@ export default defineConfig({
   plugins: [
     cloudflare({
       viteEnvironment: { name: "worker" },
-      persistState: false,
     }),
     redwood(),
   ],
