@@ -1,0 +1,17 @@
+.game-card {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid black;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    width: 200px;
+}
+
+.games-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}

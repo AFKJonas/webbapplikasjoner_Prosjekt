@@ -3,8 +3,8 @@ import { defineApp } from "rwsdk/worker";
 
 import { Document } from "@/app/document";
 import { setCommonHeaders } from "@/app/headers";
-import { Home } from "@/app/pages/home";
-import {Games} from "@/app/components/Games"; // importert Games
+import {GamesList} from "@/app/components/GamesList"; // importert Games
+import { HomePage } from "./app/pages/HomePage"; // importert HomePage
 
 export type AppContext = {};
 
@@ -15,6 +15,6 @@ export default defineApp([
     ctx;
   },
   render(Document, [
-    route("/", Home), 
-    route("/games", Games)]), // Lagt til route for /games fra komponentet Games
+    route("/", HomePage), // endret route for / til HomePage 
+  ]),
 ]);
