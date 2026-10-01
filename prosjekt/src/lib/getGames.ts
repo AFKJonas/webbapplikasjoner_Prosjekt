@@ -8,6 +8,7 @@ export async function getGames(steamId: string) {
   if (!response.ok) {
     throw new Error (`Steam feilet: ${response.status}`); // Dersom Steam ikke klarer å koble seg til, vil denne feilmeldigen vises
   }
+  
 
   return response.json(); // Returnerer JSON-dataen fra Steam API
 }
