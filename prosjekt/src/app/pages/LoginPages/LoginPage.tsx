@@ -2,37 +2,37 @@ import CreateNewUser from "./CreateNewUser";
 export function LoginPage() {
     return (
       <main className="login-page">
-        <section>   
-            <h1>Velommmen!</h1>
+        <section className="login-form">   
+            <h1>Velkommen!</h1>
             <form>
-                <fieldset>
-                  <legend>Logg in med e-post og passord</legend>
+                <fieldset className="login-fieldset">
+                  <legend className="login-legend" >Logg inn med e-post og passord</legend>
                   <label htmlFor="email">E-post:</label>
-                  <input 
+                  <input className="login-epost-input"
                     type="email" 
                     id="email" 
                     name="email"  
                     placeholder="example@gmail.com" 
                     maxLength={254}
-                    required/>
+                    required />
 
                   <label htmlFor="password">Passord:</label>
-                  <input 
+                  <input className="login-password-input"
                     type="password" 
                     id="password" 
                     name="password" 
-                    required />
+                    placeholder="********"
+                    required />    
+                    
+                  <button className="login-button" type="submit">Logg inn</button>
                 </fieldset>
-            <button type="submit">Logg inn</button>
             </form>
-            </section>
-
-              <a href="/XXXXXXXXXXXXXXXXXXX">Glemt passord?</a> /*Må nok byttes ut*/
-            <section>
-              
-            <h2>Har ikke konto?
-              <a href="/CreateNewUser">Opprett ny konto her</a>
-            </h2>
+              <hr />
+              <a href="/XXXXXXXXXXXXXXXXXXX" className="login-a">Glemt passord?</a>
+                <h2 className="login_h2">Har du ingen konto?</h2>
+                <button className="register-button">
+                  <a href="/CreateNewUser"className="login-b">Registrer deg her</a>
+                </button>
         </section>
       </main>
     );
