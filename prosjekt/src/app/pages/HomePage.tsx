@@ -1,19 +1,21 @@
 import {GamesList} from "@/app/components/GamesList"; // importert Games
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars, faUser } from "@fortawesome/free-solid-svg-icons";
 
 export function HomePage() {
     return (
         <>
         <header>
-            <p>Hjem</p>
-            <p>Profil</p>
-            <p>Meny</p>
+            <a className="MenuLayout" href="#"><FontAwesomeIcon className="faIcon" icon={faBars} /></a>
+            <a className="HomeLayout" href="/"> Hjem</a>
+            <a className="ProfileLayout" href="#"><FontAwesomeIcon className="faIcon" icon={faUser} /></a>
         </header>
         <main>
-            <h1>HomePage</h1>
-            <GamesList steamId="76561198351280476" /> // Viser GamesList komponent med steamid som prop
+            {/*// Viser GamesList komponent med steamid som prop*/}
+            <GamesList steamId="76561198351280476" /> 
         </main>
         <footer>
-            <p>Footer</p>
+            <p>Lagd av Marius, Mohammed og Jonas</p>
         </footer>
         </>
     )
