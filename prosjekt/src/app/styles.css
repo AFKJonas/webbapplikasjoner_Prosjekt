@@ -148,6 +148,9 @@
   }
 
   /* Login Page */
+  html, body {
+    margin: 0;
+}
   .login-page {
     display: flex;
     flex-direction: column;
