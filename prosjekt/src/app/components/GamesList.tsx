@@ -15,4 +15,5 @@ export async function GamesList({ steamId }: { steamId: string }) {
             </section>
         </section>
     )
+    
 } // I return statementet vises en overskrift og JSON-dataen fra Steam API-et. 
