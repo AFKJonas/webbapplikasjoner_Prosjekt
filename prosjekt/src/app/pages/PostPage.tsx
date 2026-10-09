@@ -1,3 +1,6 @@
+import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 export function PostPage() {
     return (
       <main className="post-page">
@@ -16,8 +19,8 @@ export function PostPage() {
           </p>
   
           <div className="post-actions">
-            <button>👍 12</button>
-            <button>👎 2</button>
+            <button> <FontAwesomeIcon icon={faThumbsUp}/>  12</button>
+            <button><FontAwesomeIcon icon={faThumbsDown}/> 2</button>
             <button>🗑 Slett post</button>
           </div>
         </article>
