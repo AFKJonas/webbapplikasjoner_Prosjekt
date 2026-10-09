@@ -11,7 +11,7 @@ export function PostPage() {
         <article className="post">
           <h1>Hva synes dere om dette spillet?</h1>
   
-          <p className="post-author">👤 Skrevet av Mohammed</p>
+          <p className="post-author">Skrevet av Mohammed</p>
   
           <p className="post-content">
             Dette er innholdet i posten. Her kan brukeren
@@ -19,22 +19,28 @@ export function PostPage() {
           </p>
   
           <div className="post-actions">
-            <button> <FontAwesomeIcon icon={faThumbsUp}/>  12</button>
-            <button><FontAwesomeIcon icon={faThumbsDown}/> 2</button>
-            <button>🗑 Slett post</button>
-          </div>
+          <button>
+            <FontAwesomeIcon icon={faThumbsUp} className="faIcon" /> 12
+          </button>
+
+          <button>
+            <FontAwesomeIcon icon={faThumbsDown} className="faIcon" /> 2
+          </button>
+
+          <button>Slett post</button>
+        </div>
         </article>
   
         <section className="comments">
           <h2>Kommentarer</h2>
   
           <div className="comment">
-            <p>👤 User123</p>
+            <p>User123</p>
             <p>Dette var en interessant post!</p>
           </div>
   
           <div className="comment">
-            <p>👤 User456</p>
+            <p>User456</p>
             <p>Jeg er helt enig.</p>
           </div>
   
