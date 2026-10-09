@@ -28,7 +28,7 @@ header {
     height: 18px;
 }
 
-main {
+.mainHomePage {
     display: flex;
     text-align: center;
 }
