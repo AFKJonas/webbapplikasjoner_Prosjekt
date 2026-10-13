@@ -25,5 +25,14 @@
   // Environment variables
   "vars": {
     // Add your environment variables here
+  },
+
+  "d1_databases": [
+  {
+    "binding": "DB",
+    "database_name": "webapplikasjoner_db",
+    "database_id": "local-dev-placeholder",
+    "migrations_dir": "drizzle"
   }
+]
 }
