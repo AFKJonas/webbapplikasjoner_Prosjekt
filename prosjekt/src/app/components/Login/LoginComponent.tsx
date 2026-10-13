@@ -1,8 +1,9 @@
 "use client"
 
-import { useState} from "react"
+import { useState, SyntheticEvent } from "react"
 
-     type LoginInformation = {
+
+    export type LoginInformation = {
         email: string;
         password: string;
     }
@@ -17,7 +18,25 @@ export function LoginComponent ({onSubmit}: LoginInformationProps) {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState ("")
 
+    const updateEmail: React.ChangeEventHandler<HTMLInputElement, HTMLInputElement> = (event) => {
+            setEmail(event.target.value);
+    };
+    const updatePassword: React.ChangeEventHandler<HTMLInputElement, HTMLInputElement> = (event) => {
+            setPassword(event.target.value);        
+    };
 
+    const handleForm = (event: SyntheticEvent) => {
+        event.preventDefault();
+        if (email === "" || password === "") {
+          window.alert("Alle feltene må fylles ut for å kunne logge inn");
+          return;
+        };
+        onSubmit({ email, password });
+
+        console.log((email), (password)); //MÅ FJERNES
+        setEmail("");
+        setPassword("");
+      }
 
     // Lag en const som updateEmail og oppdaterer email basert på et event, sett input som et event.target som et HTMLInputElement 
     // videre inni const en if statement som sjekker om input er tomt og hvis tomt: setemail (staten) til (input.value)
@@ -43,7 +62,7 @@ export function LoginComponent ({onSubmit}: LoginInformationProps) {
 
     
     return (
-        <section>
+        <section className="login-section">
                 <form onSubmit = {handleForm}>
                 <fieldset className="login-fieldset">
                   <legend className="login-legend" >Logg inn med e-post og passord</legend>
@@ -70,14 +89,12 @@ export function LoginComponent ({onSubmit}: LoginInformationProps) {
                     /> 
                     
                   <button className="login-button" type="submit">Logg inn</button>
+                  
                 </fieldset>
             </form>
               <hr />
-              <a href="/XXXXXXXXXXXXXXXXXXX" className="login-a">Glemt passord?</a>
                 <h2 className="login_h2">Har du ingen konto?</h2>
-                <button className="register-button">
-                  <a href="/CreateNewUser"className="login-b">Registrer deg her</a>
-                </button>
+                  <a href="/CreateNewUser"className="register-button">Registrer deg her</a>
         </section>
     )
   }
