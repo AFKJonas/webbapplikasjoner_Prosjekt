@@ -1,7 +1,7 @@
 "use server";
 
-import {LoginInformation} from "./LoginComponent";
-import { NewUserInformation } from "./NewUserComponent";
+import {LoginInformation} from "../app/components/Login/LoginComponent";
+import { NewUserInformation } from "../app/components/Login/NewUserComponent";
 
 export async function loginUser( loginInformation: LoginInformation) {
     console.log("Logging in user with email:", loginInformation.email);

@@ -1,4 +1,4 @@
-import { createNewUser } from "@/app/components/Login/action";
+import { createNewUser } from "@/lib/action";
 import { NewUserComponent } from "../../components/Login/NewUserComponent";
 export default function CreateNewUser() {
     return (

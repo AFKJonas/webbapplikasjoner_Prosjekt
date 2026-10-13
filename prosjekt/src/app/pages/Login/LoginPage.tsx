@@ -1,6 +1,6 @@
 import CreateNewUser from "./CreateNewUser";
 import { LoginComponent } from "../../components/Login/LoginComponent";
-import { loginUser } from "@/app/components/Login/action";
+import { loginUser } from "@/lib/action";
 export function LoginPage() {
     return (
       <main className="login-page">
