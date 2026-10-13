@@ -19,6 +19,13 @@ export function NewUserComponent({onSubmit}: NewUserInformationProps) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
+    const RegisterResult = {
+        username: username,
+        steamId: steamId,
+        email: email,
+        password: password
+    }
+
     const updateUsername: React.ChangeEventHandler<HTMLInputElement, HTMLInputElement> = (event) => {
         setUsername(event.target.value);
     };
@@ -38,7 +45,7 @@ export function NewUserComponent({onSubmit}: NewUserInformationProps) {
             window.alert("Alle feltene må fylles ut for å kunne opprette en ny bruker");
             return;
         };
-        onSubmit({ username, steamId, email, password });
+        onSubmit(RegisterResult);
         console.log((username), (steamId), (email), (password)); //MÅ FJERNES
         setUsername("");
         setSteamId("");

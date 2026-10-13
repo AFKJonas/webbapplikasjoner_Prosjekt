@@ -13,10 +13,17 @@ import { useState, SyntheticEvent } from "react"
     }
 
 
+
+    
 export function LoginComponent ({onSubmit}: LoginInformationProps) {
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState ("")
+
+     const LoginResult = {
+      email: email,
+      password: password
+    }
 
     const updateEmail: React.ChangeEventHandler<HTMLInputElement, HTMLInputElement> = (event) => {
             setEmail(event.target.value);
@@ -31,7 +38,7 @@ export function LoginComponent ({onSubmit}: LoginInformationProps) {
           window.alert("Alle feltene må fylles ut for å kunne logge inn");
           return;
         };
-        onSubmit({ email, password });
+        onSubmit(LoginResult);
 
         console.log((email), (password)); //MÅ FJERNES
         setEmail("");

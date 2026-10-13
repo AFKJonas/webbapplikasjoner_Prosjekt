@@ -7,3 +7,4 @@ export const users = sqliteTable("users", {
   password: text().notNull(),
   steamId: text().notNull().unique(),
 });
+
