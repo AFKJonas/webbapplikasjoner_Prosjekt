@@ -4,11 +4,11 @@ import { defineApp } from "rwsdk/worker";
 import { Document } from "@/app/document";
 import { setCommonHeaders } from "@/app/headers";
 import {GamesList} from "@/app/components/Games/GamesList"; // importert Games
-import { HomePage } from "./app/pages/HomePage"; // importert HomePage
-import { PostPage } from "./app/pages/PostPage";
-import { ForumPage } from "./app/pages/ForumPage";
-import { LoginPage } from "./app/pages/LoginPages/LoginPage"; // importert LoginPage
-import CreateNewUser from "./app/pages/LoginPages/CreateNewUser"; // importert NewUserRegistrer
+import { HomePage } from "./app/pages/Game/HomePage"; // importert HomePage
+import { PostPage } from "./app/pages/Forum/PostPage";
+import { ForumPage } from "./app/pages/Forum/ForumPage";
+import { LoginPage } from "./app/pages/Login/LoginPage"; // importert LoginPage
+import CreateNewUser from "./app/pages/Login/CreateNewUser"; // importert NewUserRegistrer
 
 export type AppContext = {};
 
