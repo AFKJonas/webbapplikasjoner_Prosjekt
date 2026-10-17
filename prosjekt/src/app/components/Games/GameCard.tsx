@@ -14,7 +14,7 @@ export type GameCardProps = {
 
 export function GameCard (props: GameCardProps) { //Henter props fra GameCardProps
     return ( // returnerer oppsettet som GameCard skal ha
-        <a className="game-card" href="/">
+        <a className="game-card" href="/forum">
             <h2>{props.name}</h2>
             <p>Playtime forever: {Math.round(props.playtime_forever / 60)} hours</p>
             {props.img_icon_url && <img className="img_icon_url" src={`https://media.steampowered.com/steamcommunity/public/images/apps/${props.appid}/${props.img_icon_url}.jpg`} alt={props.name} />}

@@ -10,6 +10,7 @@ import { ForumPage } from "./app/pages/Forum/ForumPage";
 import { LoginPage } from "./app/pages/Login/LoginPage"; // importert LoginPage
 import CreateNewUser from "./app/pages/Login/CreateNewUser"; // importert NewUserRegistrer
 import { users } from "./db/schema/schema";
+import { ProfilePage } from "./app/pages/Profile/ProfilePage";
 
 export type AppContext = {};
 
@@ -25,6 +26,7 @@ export default defineApp([
     route("/forum", ForumPage),
     route("/Login", LoginPage), // Burde nok bytte ut "/" HomePage med noe annet og få LogIn page på "/" ?
     route("/CreateNewUser", CreateNewUser),
+    route("/Profile", ProfilePage),
     prefix("/api", [
       route("/seed", async () => {
         const seed = await db.insert(users)
