@@ -34,9 +34,9 @@ export function ForumPage() {
 
   return (
     <main className="forum-page">
-      <header>
-        <h1>Spillforum</h1>
-        <p>Diskuter spill, del meninger og snakk med andre spillere.</p>
+      <header className="forum-header">
+        <h1>Mine Forums</h1>
+        <p>Her ligger dine posts.</p>
       </header>
 
       <section className="post-list" aria-label="Foruminnlegg">
@@ -71,11 +71,32 @@ export function ForumPage() {
       </section>
 
       
-      {showNewPost ? 
-      <NewPost onCreatePost={handleCreatePost} onCancel={() => setShowNewPost(false)} /> : 
-      <button className="new-post-button" type="button" 
-      onClick={() => setShowNewPost(true)}>+ Ny post
-      </button>}
+      
+      {showNewPost && (
+        <div
+          className="modal-overlay"
+          onClick={() => setShowNewPost(false)}
+        >
+          <div
+            className="modal-content"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <NewPost
+              onCreatePost={handleCreatePost}
+              onCancel={() => setShowNewPost(false)}
+            />
+          </div>
+        </div>
+      )}
+
+      <button
+        className="new-post-button"
+        type="button"
+        onClick={() => setShowNewPost(true)}
+      >
+        + Ny post
+      </button>
+
 
     </main>
   );

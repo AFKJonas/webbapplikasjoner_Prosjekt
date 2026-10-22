@@ -9,6 +9,7 @@ import { PostPage } from "./app/pages/PostPage";
 import { ForumPage } from "./app/pages/ForumPage";
 import { LoginPage } from "./app/pages/LoginPages/LoginPage"; // importert LoginPage
 import CreateNewUser from "./app/pages/LoginPages/CreateNewUser"; // importert NewUserRegistrer
+import { ExploreForumPage } from "./app/pages/ExploreForumPage";
 
 export type AppContext = {};
 
@@ -24,5 +25,6 @@ export default defineApp([
     route("/forum", ForumPage),
     route("/Login",LoginPage), // Burde nok bytte ut "/" HomePage med noe annet og få LogIn page på "/" ?
     route("/CreateNewUser", CreateNewUser),
+    route("/explore", ExploreForumPage),
   ]),
 ]);
