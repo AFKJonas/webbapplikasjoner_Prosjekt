@@ -1,4 +1,4 @@
-import { getUserInformation } from "@/lib/getDbinfo";
+import { getUserInformation } from "@/lib/dbRepository";
 
 export async function ProfileInformationList () {
     const user = await getUserInformation(1)

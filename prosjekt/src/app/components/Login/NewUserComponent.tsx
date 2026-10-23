@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, SyntheticEvent} from "react";
+import { useState, ChangeEvent} from "react";
 
 export type NewUserInformation = {
     username: string;
@@ -39,7 +39,7 @@ export function NewUserComponent({onSubmit}: NewUserInformationProps) {
         setPassword(event.target.value);
     };
 
-    const handleFormSubmit = (event: SyntheticEvent) => {
+    const handleFormSubmit = (event: ChangeEvent) => {
         event.preventDefault();
         if (username === "" || steamId === "" || email === "" || password === "") {
             window.alert("Alle feltene må fylles ut for å kunne opprette en ny bruker");

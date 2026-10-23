@@ -1,4 +1,4 @@
-import { getGames } from "@/lib/getGames"; // importerer funksjonen for å hente API-et
+import { getGames } from "@/lib/gamesApi"; // importerer funksjonen for å hente API-et
 import { GameCard } from "./GameCard"; // importerer GameCard komponentet
 
 export async function GamesList({ steamId }: { steamId: string }) {

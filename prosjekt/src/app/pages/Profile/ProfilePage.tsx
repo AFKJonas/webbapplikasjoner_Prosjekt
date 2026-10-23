@@ -5,9 +5,9 @@ export function ProfilePage () {
     return (
         <AppLayout>
             <main>
-                <h1>Velkommen til din profil</h1>
+                <h1>67</h1>
                 <ProfileInformationList />
-            </main>
+            </main> 
         </AppLayout>
     )
 }

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, SyntheticEvent } from "react"
+import { useState, ChangeEvent } from "react"
 
 
     export type LoginInformation = {
@@ -32,7 +32,7 @@ export function LoginComponent ({onSubmit}: LoginInformationProps) {
             setPassword(event.target.value);        
     };
 
-    const handleForm = (event: SyntheticEvent) => {
+    const handleForm = (event: ChangeEvent) => {
         event.preventDefault();
         if (email === "" || password === "") {
           window.alert("Alle feltene må fylles ut for å kunne logge inn");
