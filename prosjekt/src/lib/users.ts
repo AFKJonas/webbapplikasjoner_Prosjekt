@@ -27,3 +27,4 @@ export async function getUser (loggedInUser: LoginInformation) {
 
     console.log("Brukeren er logget inn")
 }
+

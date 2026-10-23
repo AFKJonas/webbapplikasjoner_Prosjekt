@@ -7,7 +7,6 @@ import { AppLayout } from "@/app/components/Layout/AppLayout";
 
 export async function HomePage() {
 
-    const myUsers =  await db.select().from(users);
     const steamId = await getSteamId(2) 
 
     if (!steamId) {

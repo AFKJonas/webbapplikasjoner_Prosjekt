@@ -1,4 +1,4 @@
-"use server";
+/* "use server";
 
 import {LoginInformation} from "../app/components/Login/LoginComponent";
 import { NewUserInformation } from "../app/components/Login/NewUserComponent";
@@ -13,5 +13,5 @@ export async function createNewUser( newUserInformation: NewUserInformation) {
     console.log("Creating new user with steam ID:", newUserInformation.steamId);
     console.log("Creating new user with email:", newUserInformation.email);
     console.log("Creating new user with password:", newUserInformation.password);
-}
+} */
 

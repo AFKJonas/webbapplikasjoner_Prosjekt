@@ -1,4 +1,3 @@
-import CreateNewUser from "./CreateNewUser";
 import { LoginComponent } from "../../components/Login/LoginComponent";
 import { getUser } from "@/lib/users";
 export function LoginPage() {

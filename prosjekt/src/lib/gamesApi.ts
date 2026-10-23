@@ -24,3 +24,4 @@ export async function getGames(steamId: string): Promise<GamesResponse> {
 
   return response.json() as Promise<GamesResponse>; // Returnerer JSON-dataen fra Steam API
 }
+
