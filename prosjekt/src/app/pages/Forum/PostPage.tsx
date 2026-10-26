@@ -1,58 +1,55 @@
-import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { posts } from "../posts.data";
+import type { RequestInfo } from "rwsdk/worker";
+import { Comments } from "../components/Games/Comments";
+import { PostVotes } from "../components/Games/PostVotes";
 
-export function PostPage() {
+
+export function PostPage({ request }: RequestInfo) {
+  const url = new URL(request.url);
+  const postId = url.searchParams.get("id");
+  const post = posts.find((post) => post.id === postId);
+
+  
+    
+
+  if (!post) {
     return (
       <main className="post-page">
+        <h1>Posten ble ikke funnet</h1>
         <a href="/forum" className="back-button">
-            ← Tilbake til forum
+          ← Tilbake til forum
         </a>
-  
-        <article className="post">
-          <h1>Hva synes dere om dette spillet?</h1>
-  
-          <p className="post-author">Skrevet av Mohammed</p>
-  
-          <p className="post-content">
-            Dette er innholdet i posten. Her kan brukeren
-            skrive hva de synes om spillet.
-          </p>
-  
-          <div className="post-actions">
-          <button>
-            <FontAwesomeIcon icon={faThumbsUp} className="faIcon" /> 12
-          </button>
-
-          <button>
-            <FontAwesomeIcon icon={faThumbsDown} className="faIcon" /> 2
-          </button>
-
-          <button>Slett post</button>
-        </div>
-        </article>
-  
-        <section className="comments">
-          <h2>Kommentarer</h2>
-  
-          <div className="comment">
-            <p>User123</p>
-            <p>Dette var en interessant post!</p>
-          </div>
-  
-          <div className="comment">
-            <p>User456</p>
-            <p>Jeg er helt enig.</p>
-          </div>
-  
-          <textarea
-            className="comment-box"
-            placeholder="Skriv en kommentar..."
-          />
-  
-          <button className="comment-button">
-            Kommenter
-          </button>
-        </section>
       </main>
     );
   }
+
+  return (
+    <main className="post-page">
+      <nav aria-label="Brødsmulesti">
+        <a href="/forum" className="back-button">
+          ← Tilbake til forum
+        </a>
+      </nav>
+
+      <article className="post">
+        <header>
+        <h1>{post.title}</h1>
+
+        <p className="post-author">
+          Skrevet av {post.author}
+        </p>
+        </header>
+
+        <section className="post-content" aria-label="Innleggets innhold">
+          <p>{post.description}</p>
+        </section>
+
+        
+        <PostVotes initialLikes={post.thumbsUp} initialDislikes={post.thumbsDown}/>
+
+      </article>
+
+      <Comments />
+    </main>
+  );
+}

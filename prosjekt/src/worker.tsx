@@ -4,11 +4,15 @@ import { db } from "@/db"
 import { Document } from "@/app/document";
 import { setCommonHeaders } from "@/app/headers";
 import {GamesList} from "@/app/components/Games/GamesList"; // importert Games
+import { Document } from "@/app/document";
+import { setCommonHeaders } from "@/app/headers";
+import { GamesList } from "@/app/components/Games/GamesList"; // importert Games
 import { HomePage } from "./app/pages/Game/HomePage"; // importert HomePage
 import { PostPage } from "./app/pages/Forum/PostPage";
 import { ForumPage } from "./app/pages/Forum/ForumPage";
 import { LoginPage } from "./app/pages/Login/LoginPage"; // importert LoginPage
 import CreateNewUser from "./app/pages/Login/CreateNewUser"; // importert NewUserRegistrer
+import { ExploreForumPage } from "./app/pages/ExploreForumPage";
 import { users } from "./db/schema/schema";
 import { ProfilePage } from "./app/pages/Profile/ProfilePage";
 
@@ -27,10 +31,11 @@ export default defineApp([
     route("/Login", LoginPage), // Burde nok bytte ut "/" HomePage med noe annet og få LogIn page på "/" ?
     route("/CreateNewUser", CreateNewUser),
     route("/Profile", ProfilePage),
+    route("/explore", ExploreForumPage),
     prefix("/api", [
       route("/seed", async () => {
         const seed = await db.insert(users)
-                              .values({username: "Marius", email: "email@email.com", password: "1234", steamId: "76561198351280476"})
+                              .values({ username: "Marius", email: "email@email.com", password: "1234", steamId: "76561198351280476" })
                               .returning();
         return Response.json(seed)
       })
