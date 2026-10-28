@@ -12,7 +12,7 @@ import { PostPage } from "./app/pages/Forum/PostPage";
 import { ForumPage } from "./app/pages/Forum/ForumPage";
 import { LoginPage } from "./app/pages/Login/LoginPage";
 import CreateNewUser from "./app/pages/Login/CreateNewUser";
-import { ExploreForumPage } from "./app/pages/ExploreForumPage";
+import { ExploreForumPage } from "./app/pages/Forum/ExploreForumPage";
 import { ProfilePage } from "./app/pages/Profile/ProfilePage";
 import { AdminPage } from "./app/pages/Admin/AdminPage";
 
