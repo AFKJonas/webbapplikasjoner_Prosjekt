@@ -23,7 +23,7 @@ export const auth = betterAuth({
     fields: { name: "username" }, // better-auth "name" lagres i kolonnen username
     additionalFields: {
       steamId: { type: "string", required: true },
-      // input: false = ingen kan velge rolle selv ved registrering
+      // input: true = midlertidlig
       role: { type: "string", required: false, defaultValue: "user", input: true },
     },
   },

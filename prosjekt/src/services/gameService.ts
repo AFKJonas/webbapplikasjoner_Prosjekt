@@ -1,4 +1,4 @@
-import { getGames } from "@/db/repositories/gamesApi";
+import { getGames } from "@/repositories/gamesApi";
 
 export async function getGamesForUser(steamId: string) {
   const data = await getGames(steamId);
