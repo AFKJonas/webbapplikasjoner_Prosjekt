@@ -1,18 +1,11 @@
-import { getUserInformation } from "@/lib/dbRepository";
+type Props = { username: string; email: string; steamId: string };
 
-export async function ProfileInformationList () {
-    const user = await getUserInformation(1)
-
-
-    if (!user) {
-        return <p>Klarte ikke å finne brukeren.</p>;
-    }
-
+export function ProfileInformationList({ username, email, steamId }: Props) {
     return (
         <section>
-            <p>Navn: {user.username} </p>
-            <p>Email: {user.email}</p>
-            <p>steamId: {user.steamId}</p>
+            <p>Navn: {username}</p>
+            <p>Email: {email}</p>
+            <p>steamId: {steamId}</p>
         </section>
-    )
+    );
 }

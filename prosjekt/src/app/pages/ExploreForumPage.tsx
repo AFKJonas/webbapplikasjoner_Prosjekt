@@ -1,5 +1,5 @@
 
-import { posts } from "../posts.data";
+import { posts } from "@/app/data/posts.data";
 import {
   faThumbsUp,
   faThumbsDown,

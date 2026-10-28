@@ -1,44 +1,38 @@
-import { render, route, prefix } from "rwsdk/router";
+import { render, route, layout } from "rwsdk/router";
 import { defineApp } from "rwsdk/worker";
-import { db } from "@/db"
 import { Document } from "@/app/document";
 import { setCommonHeaders } from "@/app/headers";
-import {GamesList} from "@/app/components/Games/GamesList"; // importert Games
-import { Document } from "@/app/document";
-import { setCommonHeaders } from "@/app/headers";
-import { GamesList } from "@/app/components/Games/GamesList"; // importert Games
-import { HomePage } from "./app/pages/Game/HomePage"; // importert HomePage
+import { auth } from "@/auth/auth";
+import { authMiddleware } from "@/auth/middleware";
+import { requireAuth, requireAdmin } from "@/auth/guards";
+import { AuthLayout } from "@/app/components/Layout/AuthLayout";
+
+import { HomePage } from "./app/pages/Game/HomePage";
 import { PostPage } from "./app/pages/Forum/PostPage";
 import { ForumPage } from "./app/pages/Forum/ForumPage";
-import { LoginPage } from "./app/pages/Login/LoginPage"; // importert LoginPage
-import CreateNewUser from "./app/pages/Login/CreateNewUser"; // importert NewUserRegistrer
+import { LoginPage } from "./app/pages/Login/LoginPage";
+import CreateNewUser from "./app/pages/Login/CreateNewUser";
 import { ExploreForumPage } from "./app/pages/ExploreForumPage";
-import { users } from "./db/schema/schema";
 import { ProfilePage } from "./app/pages/Profile/ProfilePage";
+import { AdminPage } from "./app/pages/Admin/AdminPage";
 
 export type AppContext = {};
 
 export default defineApp([
   setCommonHeaders(),
-  ({ ctx }) => {
-    // setup ctx here
-    ctx;
-  },
+  route("/api/auth/*", ({ request }) => auth.handler(request)), // MÅ ligge før authMiddleware
+  authMiddleware,
+
   render(Document, [
-    route("/", HomePage), // endret route for / til HomePage 
-    route("/post", PostPage),
-    route("/forum", ForumPage),
-    route("/Login", LoginPage), // Burde nok bytte ut "/" HomePage med noe annet og få LogIn page på "/" ?
-    route("/CreateNewUser", CreateNewUser),
-    route("/Profile", ProfilePage),
-    route("/explore", ExploreForumPage),
-    prefix("/api", [
-      route("/seed", async () => {
-        const seed = await db.insert(users)
-                              .values({ username: "Marius", email: "email@email.com", password: "1234", steamId: "76561198351280476" })
-                              .returning();
-        return Response.json(seed)
-      })
-    ])
+    layout(AuthLayout, [
+      route("/", [requireAuth(), HomePage]),
+      route("/post", [requireAuth(), PostPage]),
+      route("/forum", [requireAuth(), ForumPage]),
+      route("/Login", LoginPage),
+      route("/CreateNewUser", CreateNewUser),
+      route("/Profile", [requireAuth(), ProfilePage]),
+      route("/explore", ExploreForumPage),
+      route("/admin", [requireAdmin(), AdminPage]),
+    ]),
   ]),
 ]);

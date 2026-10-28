@@ -3,10 +3,10 @@
 
 import {faThumbsUp, faThumbsDown, faComment,} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { posts } from "../posts.data";
+import { posts } from "@/app/data/posts.data";
 import { useState } from "react";
-import type { Post } from "../post.types";
-import { NewPost } from "../components/Games/NewPost";
+import type { Post } from "@/app/types/post.types";
+import { NewPost } from "@/app/components/Forum/NewPost";
 
 
 

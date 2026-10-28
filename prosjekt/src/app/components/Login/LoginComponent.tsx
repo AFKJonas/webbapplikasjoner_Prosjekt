@@ -39,8 +39,6 @@ export function LoginComponent ({onSubmit}: LoginInformationProps) {
           return;
         };
         onSubmit(LoginResult);
-
-        console.log((email), (password)); //MÅ FJERNES
         setEmail("");
         setPassword("");
       }

@@ -7,6 +7,7 @@ export type NewUserInformation = {
     steamId: string;
     email: string;
     password: string;
+    role: "user" | "admin";
 }
 
 export interface NewUserInformationProps {
@@ -18,12 +19,15 @@ export function NewUserComponent({onSubmit}: NewUserInformationProps) {
     const [steamId, setSteamId] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [role, setRole] = useState<"user" | "admin">("user");
+
 
     const RegisterResult = {
         username: username,
         steamId: steamId,
         email: email,
-        password: password
+        password: password,
+        role: role
     }
 
     const updateUsername: React.ChangeEventHandler<HTMLInputElement, HTMLInputElement> = (event) => {
@@ -38,6 +42,9 @@ export function NewUserComponent({onSubmit}: NewUserInformationProps) {
     const updatePassword: React.ChangeEventHandler<HTMLInputElement, HTMLInputElement> = (event) => {
         setPassword(event.target.value);
     };
+    const updateRole: React.ChangeEventHandler<HTMLSelectElement, HTMLSelectElement> = (event) => {
+    setRole(event.target.value as "user" | "admin");
+    };
 
     const handleFormSubmit = (event: ChangeEvent) => {
         event.preventDefault();
@@ -46,11 +53,11 @@ export function NewUserComponent({onSubmit}: NewUserInformationProps) {
             return;
         };
         onSubmit(RegisterResult);
-        console.log((username), (steamId), (email), (password)); //MÅ FJERNES
         setUsername("");
         setSteamId("");
         setEmail("");
         setPassword("");
+        setRole("user");
     }
 
 
@@ -108,6 +115,12 @@ export function NewUserComponent({onSubmit}: NewUserInformationProps) {
                             onChange={updatePassword}
                             value={password}
                             required />
+
+                        <label htmlFor="role">Rolle:</label>
+                            <select id="role" name="role" value={role} onChange={updateRole}>
+                                <option value="user">Bruker</option>
+                                <option value="admin">Admin</option>
+                            </select>
                         <button type="submit" className="register-new-user">Registrer deg</button>
                     </fieldset> 
                 </form>

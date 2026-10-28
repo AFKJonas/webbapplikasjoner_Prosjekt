@@ -1,7 +1,7 @@
-import { posts } from "../posts.data";
+import { posts } from "@/app/data/posts.data"
 import type { RequestInfo } from "rwsdk/worker";
-import { Comments } from "../components/Games/Comments";
-import { PostVotes } from "../components/Games/PostVotes";
+import { Comments } from "@/app/components/Forum/Comments";
+import { PostVotes } from "@/app/components/Forum/PostVotes";
 
 
 export function PostPage({ request }: RequestInfo) {

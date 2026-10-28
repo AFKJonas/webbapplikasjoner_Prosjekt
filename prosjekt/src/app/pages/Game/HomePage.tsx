@@ -1,27 +1,18 @@
-import {GamesList} from "@/app/components/Games/GamesList"; // importert Games
-import { db } from "@/db"
-import { users } from "../../../db/schema/schema";
-import { getSteamId } from "@/lib/dbRepository";
+import type { RequestInfo } from "rwsdk/worker";
+import { GamesList } from "@/app/components/Games/GamesList";
 import { AppLayout } from "@/app/components/Layout/AppLayout";
 
-
-export async function HomePage() {
-
-    const steamId = await getSteamId(2) 
+export async function HomePage({ ctx }: RequestInfo) {
+    const steamId = ctx.user?.steamId;
 
     if (!steamId) {
-        return (
-        <p>Klarte ikke å finne steamId</p>
-        )
+        return <p>Klarte ikke å finne steamId</p>;
     }
     return (
-        <>
-        <AppLayout >
+        <AppLayout>
             <main className="mainHomePage">
-                {/*// Viser GamesList komponent med steamid som prop*/}
-                <GamesList steamId={steamId} /> 
+                <GamesList steamId={steamId} />
             </main>
-        </AppLayout >
-        </>
-    )
+        </AppLayout>
+    );
 }
