@@ -1,5 +1,5 @@
 
-import { posts } from "@/app/data/posts.data";
+import { getAllPosts } from "@/repositories/postRepository";
 import {
   faThumbsUp,
   faThumbsDown,
@@ -7,7 +7,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export function ExploreForumPage() {
+export async function ExploreForumPage() {
+  const posts = await getAllPosts();
   return (
     <main className="forum-page">
       <header className="forum-header">

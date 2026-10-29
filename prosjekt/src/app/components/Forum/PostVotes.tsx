@@ -3,13 +3,16 @@
 import { useState } from "react";
 import {faThumbsUp, faThumbsDown,} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { deletePostAction } from "@/app/actions/postActions";
 
 type PostVotesProps = {
+  postId: string;      
+  canDelete: boolean;
   initialLikes: number;
   initialDislikes: number;
 };
 
-export function PostVotes({
+export function PostVotes({ postId, canDelete,
   initialLikes,
   initialDislikes,
 }: PostVotesProps) {
@@ -45,6 +48,15 @@ export function PostVotes({
     }
   }
 
+    async function handleDelete() {
+    try {
+      await deletePostAction(postId);
+      window.location.href = "/forum";
+    } catch {
+      window.alert("Du har ikke tilgang til å slette denne posten");
+    }
+  }
+
   return (
     <footer className="post-actions">
       <button type="button" onClick={handleLike}>
@@ -57,7 +69,7 @@ export function PostVotes({
         <span>{dislikes}</span>
       </button>
 
-      <button type="button">Slett post</button>
+      {canDelete && <button type="button" onClick={handleDelete}>Slett post</button>}
     </footer>
   );
 }

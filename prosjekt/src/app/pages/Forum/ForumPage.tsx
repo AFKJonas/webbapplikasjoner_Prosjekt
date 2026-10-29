@@ -3,31 +3,25 @@
 
 import {faThumbsUp, faThumbsDown, faComment,} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { posts } from "@/app/data/posts.data";
+import { createPostAction } from "@/app/actions/postActions";
 import { useState } from "react";
 import type { Post } from "@/app/types/post.types";
 import { NewPost } from "@/app/components/Forum/NewPost";
 
 
 
-export function ForumPage() {
-
-  const [forumPosts, setForumPosts] = useState<Post[]>(posts);
+export function ForumPage({ initialPosts }: { initialPosts: Post[] }) {
+  const [forumPosts, setForumPosts] = useState<Post[]>(initialPosts);
   const [showNewPost, setShowNewPost] = useState(false);
 
-  function handleCreatePost(title: string, description: string) {
-    const newPost: Post = {
-      id: crypto.randomUUID(),
-      title,
-      description,
-      author: "Mohammed",
-      createdAt: new Date().toISOString().split("T")[0],
-      thumbsUp: 0,
-      thumbsDown: 0,
-    };
-  
-    setForumPosts((currentPosts) => [newPost, ...currentPosts]);
-    setShowNewPost(false);
+  async function handleCreatePost(title: string, description: string) {
+    try {
+      const newPost = await createPostAction(title, description);
+      setForumPosts((currentPosts) => [newPost, ...currentPosts]);
+      setShowNewPost(false);
+    } catch {
+      window.alert("Kunne ikke opprette posten");
+    }
   }
 
 
@@ -73,11 +67,11 @@ export function ForumPage() {
       
       
       {showNewPost && (
-        <div
+        <section
           className="modal-overlay"
           onClick={() => setShowNewPost(false)}
         >
-          <div
+          <section
             className="modal-content"
             onClick={(event) => event.stopPropagation()}
           >
@@ -85,8 +79,8 @@ export function ForumPage() {
               onCreatePost={handleCreatePost}
               onCancel={() => setShowNewPost(false)}
             />
-          </div>
-        </div>
+          </section>
+        </section>
       )}
 
       <button

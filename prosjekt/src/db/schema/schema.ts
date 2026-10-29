@@ -33,3 +33,11 @@ export const accounts = sqliteTable("accounts", {
   password: text(),
   ...timestamps,
 });
+
+export const posts = sqliteTable("posts", {
+  id: text().primaryKey().$defaultFn(() => crypto.randomUUID()),
+  title: text().notNull(),
+  description: text().notNull(),
+  authorId: text().notNull().references(() => users.id, { onDelete: "cascade" }),
+  createdAt: integer({ mode: "timestamp" }).notNull().$defaultFn(() => new Date()),
+});

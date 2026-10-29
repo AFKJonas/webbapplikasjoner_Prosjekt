@@ -1,13 +1,13 @@
-import { posts } from "@/app/data/posts.data"
+import { getPostById } from "@/repositories/postRepository";
 import type { RequestInfo } from "rwsdk/worker";
 import { Comments } from "@/app/components/Forum/Comments";
 import { PostVotes } from "@/app/components/Forum/PostVotes";
 
 
-export function PostPage({ request }: RequestInfo) {
+export async function PostPage({ request, ctx }: RequestInfo) {
   const url = new URL(request.url);
   const postId = url.searchParams.get("id");
-  const post = posts.find((post) => post.id === postId);
+  const post = postId ? await getPostById(postId) : null;
 
   
     
@@ -45,7 +45,12 @@ export function PostPage({ request }: RequestInfo) {
         </section>
 
         
-        <PostVotes initialLikes={post.thumbsUp} initialDislikes={post.thumbsDown}/>
+        <PostVotes
+        postId={post.id}
+        canDelete={ctx.user?.role === "admin" || ctx.user?.id === post.authorId}
+        initialLikes={post.thumbsUp}
+        initialDislikes={post.thumbsDown}
+      />
 
       </article>
 

@@ -12,7 +12,7 @@ export type GamesResponse = {
 };
 
 export async function getGames(steamId: string): Promise<GamesResponse> {
-
+try {
   const response = await fetch(
     `https://api.steampowered.com/IPlayerService/GetOwnedGames/v1/?key=${env.STEAM_API_KEY}&steamid=${steamId}&format=json&include_appinfo=true`
   ); // linken over henter informasjon om spillene
@@ -21,7 +21,13 @@ export async function getGames(steamId: string): Promise<GamesResponse> {
     throw new Error (`Steam feilet: ${response.status}`); // Dersom Steam ikke klarer å koble seg til, vil denne feilmeldigen vises
   }
   
-
   return response.json() as Promise<GamesResponse>; // Returnerer JSON-dataen fra Steam API
+}
+
+catch (error) {
+  throw new Error("Kunne ikke hente spill fra steam")
+}
+  
+
 }
 
