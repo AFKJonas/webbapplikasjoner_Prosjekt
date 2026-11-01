@@ -121,8 +121,10 @@ export function NewUserComponent({onSubmit}: NewUserInformationProps) {
                                 <option value="user">Bruker</option>
                                 <option value="admin">Admin</option>
                             </select>
+                            <hr className="new-user-hr"/>
                         <button type="submit" className="register-new-user">Registrer deg</button>
                     </fieldset> 
+                    <a href="/Login" className="createUser-avbryt-a-tag">Avbryt</a>
                 </form>
             </section>
     )
