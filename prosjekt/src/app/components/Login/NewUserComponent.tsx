@@ -63,6 +63,7 @@ export function NewUserComponent({onSubmit}: NewUserInformationProps) {
 
     return (
             <section className="new-user-section">
+                <a href="/Login" className="back-to-login-link">← Tilbake til innlogging</a>
                 <h1 className="new-user-h1">Opprett ny bruker</h1>
                 <form onSubmit={handleFormSubmit} className="new-user-form">
                     <fieldset className="new-user-fieldset">
