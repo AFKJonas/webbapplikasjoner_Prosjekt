@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, ChangeEvent} from "react";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export type NewUserInformation = {
     username: string;
@@ -63,7 +65,7 @@ export function NewUserComponent({onSubmit}: NewUserInformationProps) {
 
     return (
             <section className="new-user-section">
-                <a href="/Login" className="back-to-login-link">← Tilbake til innlogging</a>
+                <a href="/Login" className="back-to-login-link">{<FontAwesomeIcon icon={faArrowLeft} />} Tilbake til innlogging</a>
                 <h1 className="new-user-h1">Opprett ny bruker</h1>
                 <form onSubmit={handleFormSubmit} className="new-user-form">
                     <fieldset className="new-user-fieldset">

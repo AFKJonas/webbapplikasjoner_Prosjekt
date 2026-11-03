@@ -1,6 +1,6 @@
 import { it, expect, vi } from "vitest";
 import { env } from "cloudflare:workers";
-import { getGamesForUser } from "./gameService";
+import { getGamesForUser } from "@/services/gameService";
 
 it("henter spill fra Steam API med fetch", async () => {
   // gamesApi.ts bygger en URL med STEAM_API_KEY, så vi gir den en falsk nøkkel

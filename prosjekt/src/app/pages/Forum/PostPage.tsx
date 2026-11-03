@@ -2,6 +2,9 @@ import { getPostById } from "@/repositories/postRepository";
 import type { RequestInfo } from "rwsdk/worker";
 import { Comments } from "@/app/components/Forum/Comments";
 import { PostVotes } from "@/app/components/Forum/PostVotes";
+import { AppLayout } from "@/app/components/Layout/AppLayout";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 export async function PostPage({ request, ctx }: RequestInfo) {
@@ -17,17 +20,18 @@ export async function PostPage({ request, ctx }: RequestInfo) {
       <main className="post-page">
         <h1>Posten ble ikke funnet</h1>
         <a href="/forum" className="back-button">
-          ← Tilbake til forum
+          {<FontAwesomeIcon icon={faArrowLeft} />} Tilbake til forum
         </a>
       </main>
     );
   }
 
   return (
+    <AppLayout>
     <main className="post-page">
       <nav aria-label="Brødsmulesti">
         <a href="/forum" className="back-button">
-          ← Tilbake til forum
+          {<FontAwesomeIcon icon={faArrowLeft} />} Tilbake til forum
         </a>
       </nav>
 
@@ -56,5 +60,6 @@ export async function PostPage({ request, ctx }: RequestInfo) {
 
       <Comments />
     </main>
+    </AppLayout>
   );
 }

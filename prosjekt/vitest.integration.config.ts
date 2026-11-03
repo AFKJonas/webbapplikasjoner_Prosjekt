@@ -31,7 +31,7 @@ export default defineConfig({
     }),
   ],
   test: {
-    include: ["tests/integration/**/*.integration.test.ts"],
-    setupFiles: ["./tests/integration/apply-migrations.ts"],
+    include: ["__tests__/integration/**/*.integration.test.ts"],
+    setupFiles: ["./__tests__/integration/apply-migrations.ts"],
   },
 });

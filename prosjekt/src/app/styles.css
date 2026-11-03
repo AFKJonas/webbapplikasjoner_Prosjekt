@@ -1,7 +1,41 @@
-header {
+*{
+  font-family: Arial, sans-serif;
+}
+
+.AppLayoutHeader {
     display: flex;
-    justify-content: left;
+    justify-content: space-between;
+    align-items: center;
     padding: 10px;
+    background-color: #a5aec5;
+}
+
+.AppLayoutFooter {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    background-color: #a5aec5;
+}
+
+
+.profile-card  ul{
+  list-style: none;
+}
+
+.profile-card ul li {
+  padding: 10px;
+}
+
+.profile-page {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  min-height: 100vh;
+  background-color: #0f1220;
+  color: #f1f4ff;
+}
+.profile-page h1 {
+  color:#a5aec5;
 }
 
 .HomeLayout {
@@ -10,15 +44,14 @@ header {
 }
 
 .MenuLayout {
-    flex: 1;
     text-align: left;
     color: black;
 }
 
-.ProfileLayout {
-    flex: 1;
+.ProfileIcon {
     text-align: right;
     color: black;
+    padding: 5px;
 }
 
 
@@ -31,6 +64,17 @@ header {
 .mainHomePage {
     display: flex;
     text-align: center;
+    background-color: #0f1220;
+}
+
+#HomePageTitle {
+  color: #a5aec5;
+}
+
+.admin-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .game-card {
@@ -44,8 +88,8 @@ header {
     border-radius: 15px;
     width: 250px;
     text-decoration: none;
-    color: black;
-    background-color:gray;
+    color: #f1f4ff;
+    background-color:#191e30;
 }
 
 
@@ -238,6 +282,11 @@ header {
   color: var(--text-color);
   text-decoration: none;
   transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.back-button svg {
+  width: 18px;
+  height: 18px;
 }
 
 .back-button:hover {

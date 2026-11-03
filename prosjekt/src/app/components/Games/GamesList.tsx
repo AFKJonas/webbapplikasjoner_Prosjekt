@@ -6,7 +6,7 @@ export async function GamesList({ steamId }: { steamId: string }) {
 
     return (
         <section>
-            <h1>Games</h1>
+            <h1 id="HomePageTitle">Games</h1>
             <section className="games-list">
                 {games.map((game) => (
                     <GameCard key={game.appid} appid={game.appid} name={game.name} playtime_forever={game.playtime_forever} img_icon_url={game.img_icon_url} />

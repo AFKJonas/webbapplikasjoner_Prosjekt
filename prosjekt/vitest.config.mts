@@ -6,12 +6,16 @@ export default defineConfig({
     projects: [
       {
         resolve: {
-          alias: { "@": fileURLToPath(new URL("./src", import.meta.url)) },
+          alias: {
+            "@": fileURLToPath(new URL("./src", import.meta.url)),
+            "cloudflare:workers": fileURLToPath(new URL("./__tests__/cloudflare-workers.ts", import.meta.url)),
+          },
         },
         test: {
           name: "unit",
-          include: ["tests/**/*.test.ts"],
-          exclude: ["tests/integration/registration.integration.test.ts", "**/node_modules/**"],
+          restoreMocks: true,
+          include: ["__tests__/**/*.test.ts"],
+          exclude: ["__tests__/integration/**/*.integration.test.ts", "**/node_modules/**"],
         },
       },
       "./vitest.integration.config.ts",

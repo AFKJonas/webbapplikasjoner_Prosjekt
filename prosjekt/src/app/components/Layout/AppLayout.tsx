@@ -6,20 +6,22 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
   return (
     // Funksjon som lager en layout over hvordan header og footer skal se ut på siden
     <>
-      <header>
+      <header className="AppLayoutHeader">
         <a className="MenuLayout">
           <FontAwesomeIcon className="faIcon" icon={faBars} />
         </a>
         <a className="HomeLayout" href="/">Hjem</a>
-        <a className="ProfileLayout" href="/Profile">
-          <FontAwesomeIcon className="faIcon" icon={faUser} />
-        </a>
-        <AuthNav />
+        <section className="ProfileLayout">
+          <a  className="ProfileIcon" href="/Profile">
+            <FontAwesomeIcon className="faIcon" icon={faUser} />
+          </a>
+          <AuthNav/>
+        </section>
       </header>
 
       {children}
 
-      <footer>
+      <footer className="AppLayoutFooter">
         <p>Lagd av Marius, Mohammed og Jonas</p>
       </footer>
     </>

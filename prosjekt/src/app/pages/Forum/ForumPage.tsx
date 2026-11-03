@@ -1,12 +1,13 @@
 "use client";
 
 
-import {faThumbsUp, faThumbsDown, faComment,} from "@fortawesome/free-solid-svg-icons";
+import {faThumbsUp, faThumbsDown, faComment, faArrowLeft,} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { createPostAction } from "@/app/actions/postActions";
 import { useState } from "react";
 import type { Post } from "@/app/types/post.types";
 import { NewPost } from "@/app/components/Forum/NewPost";
+import { AppLayout } from "@/app/components/Layout/AppLayout";
 
 
 
@@ -27,7 +28,11 @@ export function ForumPage({ initialPosts }: { initialPosts: Post[] }) {
 
 
   return (
+    <AppLayout>
     <main className="forum-page">
+        <a href="/" className="back-button">
+          {<FontAwesomeIcon icon={faArrowLeft} />} Tilbake til hjem
+        </a>
       <header className="forum-header">
         <h1>Mine Forums</h1>
         <p>Her ligger dine posts.</p>
@@ -93,5 +98,6 @@ export function ForumPage({ initialPosts }: { initialPosts: Post[] }) {
 
 
     </main>
+    </AppLayout>
   );
 }

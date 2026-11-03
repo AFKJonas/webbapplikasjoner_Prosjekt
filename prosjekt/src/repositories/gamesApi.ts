@@ -25,7 +25,7 @@ try {
 }
 
 catch (error) {
-  throw new Error("Kunne ikke hente spill fra steam")
+  throw new Error("Kunne ikke hente spill fra steam, dette er fordi du har lagd en bruker med ugyldig steamid")
 }
   
 

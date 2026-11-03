@@ -1,4 +1,5 @@
 
+import { AppLayout } from "@/app/components/Layout/AppLayout";
 import { getAllPosts } from "@/repositories/postRepository";
 import {
   faThumbsUp,
@@ -10,6 +11,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export async function ExploreForumPage() {
   const posts = await getAllPosts();
   return (
+
+    <AppLayout>
     <main className="forum-page">
       <header className="forum-header">
         <h1>Utforsk forum</h1>
@@ -53,5 +56,6 @@ export async function ExploreForumPage() {
         ))}
       </section>
     </main>
+    </AppLayout>
   );
 }
