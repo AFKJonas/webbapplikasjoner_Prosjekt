@@ -1,11 +1,7 @@
 
 import { AppLayout } from "@/app/components/Layout/AppLayout";
 import { getAllPosts } from "@/repositories/postRepository";
-import {
-  faThumbsUp,
-  faThumbsDown,
-  faComment,
-} from "@fortawesome/free-solid-svg-icons";
+import {faThumbsUp, faThumbsDown,faComment,} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export async function ExploreForumPage() {
