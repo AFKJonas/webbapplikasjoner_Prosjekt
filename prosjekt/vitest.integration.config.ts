@@ -16,11 +16,11 @@ export default defineConfig({
             migrationsPattern: "drizzle/*/migration.sql",
           });
 
-      
-
       return {
+        // Unngår at src/worker.tsx (rwsdk) lastes inn i testmiljøet
+        main: "./src/db/index.ts",
         wrangler: {
-            configPath: "./dist/worker/wrangler.json",
+            configPath: "./wrangler.jsonc",
         },
         miniflare: {
           bindings: {
@@ -31,7 +31,7 @@ export default defineConfig({
     }),
   ],
   test: {
-    include: ["**/*.integration.test.ts"],
-    setupFiles: ["./test/apply-migrations.ts"],
+    include: ["tests/integration/**/*.integration.test.ts"],
+    setupFiles: ["./tests/integration/apply-migrations.ts"],
   },
 });

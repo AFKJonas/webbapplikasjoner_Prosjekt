@@ -23,8 +23,7 @@
     "test": "vitest run",
     "migrate:new": "drizzle-kit generate",
     "migrate:dev": "wrangler d1 migrations apply webapplikasjoner_db --local",
-    "migrate:prod": "wrangler d1 migrations apply webapplikasjoner_db --remote",
-    "test": "vitest run"
+    "migrate:prod": "wrangler d1 migrations apply webapplikasjoner_db --remote"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^7.3.1",

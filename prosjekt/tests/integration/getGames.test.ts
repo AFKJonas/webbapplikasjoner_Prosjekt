@@ -1,12 +1,9 @@
 import { describe, it, expect, vi, afterEach } from "vitest";
 
-// Cloudflare-miljøet finnes ikke i testene, så vi later som vi har en API-nøkkel
 vi.mock("cloudflare:workers", () => ({ env: { STEAM_API_KEY: "test-nøkkel" } }));
 
-// Ekte kode: getMyGames (api) -> getGamesForUser (service) -> getGames (repository)
 import { getMyGames } from "@/app/api/games";
 
-// Vi mocker kun fetch, slik at vi slipper å snakke med Steam på ekte
 function mockSteam(response: Response) {
   vi.stubGlobal("fetch", vi.fn().mockResolvedValue(response));
 }
