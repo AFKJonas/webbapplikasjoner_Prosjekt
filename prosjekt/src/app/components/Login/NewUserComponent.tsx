@@ -63,6 +63,7 @@ export function NewUserComponent({onSubmit}: NewUserInformationProps) {
 
     return (
             <section className="new-user-section">
+                <a href="/Login" className="back-to-login-link">← Tilbake til innlogging</a>
                 <h1 className="new-user-h1">Opprett ny bruker</h1>
                 <form onSubmit={handleFormSubmit} className="new-user-form">
                     <fieldset className="new-user-fieldset">
@@ -121,8 +122,10 @@ export function NewUserComponent({onSubmit}: NewUserInformationProps) {
                                 <option value="user">Bruker</option>
                                 <option value="admin">Admin</option>
                             </select>
+                            <hr className="new-user-hr"/>
                         <button type="submit" className="register-new-user">Registrer deg</button>
                     </fieldset> 
+                    <a href="/Login" className="createUser-avbryt-a-tag">Avbryt</a>
                 </form>
             </section>
     )
