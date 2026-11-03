@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import {faThumbsUp, faThumbsDown,} from "@fortawesome/free-solid-svg-icons";
+import {faThumbsUp, faThumbsDown,faPen,} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { deletePostAction } from "@/app/actions/postActions";
 
@@ -10,15 +10,17 @@ type PostVotesProps = {
   canDelete: boolean;
   initialLikes: number;
   initialDislikes: number;
+  initialTitle: string;
+  initialDescription: string;
 };
 
-export function PostVotes({ postId, canDelete,
-  initialLikes,
-  initialDislikes,
-}: PostVotesProps) {
+export function PostVotes({ postId, canDelete,initialLikes,initialDislikes,initialTitle,initialDescription,}: PostVotesProps) {
   const [likes, setLikes] = useState(initialLikes);
   const [dislikes, setDislikes] = useState(initialDislikes);
   const [vote, setVote] = useState<"like" | "dislike" | null>(null);
+  const [showEdit, setShowEdit] = useState(false);
+  const [title, setTitle] = useState(initialTitle);
+  const [description, setDescription] = useState(initialDescription);
 
   function handleLike() {
     if (vote === "like") {
@@ -58,18 +60,64 @@ export function PostVotes({ postId, canDelete,
   }
 
   return (
-    <footer className="post-actions">
-      <button type="button" onClick={handleLike}>
-        <FontAwesomeIcon icon={faThumbsUp} />
-        <span>{likes}</span>
-      </button>
-
-      <button type="button" onClick={handleDislike}>
-        <FontAwesomeIcon icon={faThumbsDown} />
-        <span>{dislikes}</span>
-      </button>
-
-      {canDelete && <button type="button" onClick={handleDelete}>Slett post</button>}
-    </footer>
+    <>
+      <footer className="post-actions">
+        <button type="button" onClick={handleLike}>
+          <FontAwesomeIcon icon={faThumbsUp} />
+          <span>{likes}</span>
+        </button>
+  
+        <button type="button" onClick={handleDislike}>
+          <FontAwesomeIcon icon={faThumbsDown} />
+          <span>{dislikes}</span>
+        </button>
+  
+        {canDelete && (
+          <>
+            <button type="button" onClick={() => setShowEdit(true)}>
+              <FontAwesomeIcon icon={faPen} />
+              Rediger innlegg
+            </button>
+  
+            <button type="button" onClick={handleDelete}>
+              Slett post
+            </button>
+          </>
+        )}
+      </footer>
+  
+      {showEdit && (
+        <section className="edit-post-form">
+          <h2>Rediger innlegg</h2>
+  
+          <form onSubmit={(event) => event.preventDefault()}>
+            <label htmlFor="edit-title">Tittel</label>
+            <input
+              id="edit-title"
+              type="text"
+              value={title}
+              onChange={(event) => setTitle(event.target.value)}
+              required
+            />
+  
+            <label htmlFor="edit-description">Beskrivelse</label>
+            <textarea
+              id="edit-description"
+              value={description}
+              onChange={(event) => setDescription(event.target.value)}
+              required
+            />
+  
+            <div className="edit-post-actions">
+              <button type="submit">Lagre endringer</button>
+  
+              <button type="button" onClick={() => setShowEdit(false)}>
+                Avbryt
+              </button>
+            </div>
+          </form>
+        </section>
+      )}
+    </>
   );
 }

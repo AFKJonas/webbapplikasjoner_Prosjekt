@@ -54,6 +54,8 @@ export async function PostPage({ request, ctx }: RequestInfo) {
         canDelete={ctx.user?.role === "admin" || ctx.user?.id === post.authorId}
         initialLikes={post.thumbsUp}
         initialDislikes={post.thumbsDown}
+        initialTitle={post.title}
+        initialDescription={post.description}
       />
 
       </article>
