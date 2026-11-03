@@ -30,9 +30,14 @@ export function ForumPage({ initialPosts }: { initialPosts: Post[] }) {
   return (
     <AppLayout>
     <main className="forum-page">
-        <a href="/" className="back-button">
-          {<FontAwesomeIcon icon={faArrowLeft} />} Tilbake til hjem
-        </a>
+      <nav aria-label="Forum-navigasjon">
+    <a href="/" className="back-button">
+      <FontAwesomeIcon icon={faArrowLeft} /> Tilbake til hjem
+    </a>
+    <a href="/explore" className="back-button">
+      <FontAwesomeIcon icon={faArrowLeft} /> Utforsk forum
+    </a>
+  </nav>
       <header className="forum-header">
         <h1>Mine Forums</h1>
         <p>Her ligger dine posts.</p>

@@ -1,7 +1,7 @@
 
 import { AppLayout } from "@/app/components/Layout/AppLayout";
 import { getAllPosts } from "@/repositories/postRepository";
-import {faThumbsUp, faThumbsDown,faComment,} from "@fortawesome/free-solid-svg-icons";
+import {faThumbsUp, faThumbsDown,faComment, faArrowLeft,} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export async function ExploreForumPage() {
@@ -10,6 +10,11 @@ export async function ExploreForumPage() {
 
     <AppLayout>
     <main className="forum-page">
+      <nav aria-label="Forum-navigasjon">
+      <a href="/forum" className="back-button">
+        <FontAwesomeIcon icon={faArrowLeft} /> Tilbake til Mine Forums
+      </a>
+    </nav>
       <header className="forum-header">
         <h1>Utforsk forum</h1>
         <p>
