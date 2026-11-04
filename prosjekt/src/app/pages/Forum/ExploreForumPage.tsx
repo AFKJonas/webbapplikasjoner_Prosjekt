@@ -4,10 +4,13 @@ import { getAllPosts } from "@/repositories/postRepository";
 import {faThumbsUp, faThumbsDown,faComment, faArrowLeft,} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+//komponent som viser alle foruminnlegg
 export async function ExploreForumPage() {
+  //henter alle innlegg fra databsen
   const posts = await getAllPosts();
   return (
 
+    //legger siden inn i den felles layouten
     <AppLayout>
     <main className="forum-page">
       <nav aria-label="Forum-navigasjon">
@@ -23,8 +26,10 @@ export async function ExploreForumPage() {
         </p>
       </header>
 
+      {/*viser alle frouminnleggene som er hentet fra databsen */}
       <section className="post-list" aria-label="Alle foruminnlegg">
         {posts.map((post) => (
+          //viser hvert innlegg som et eget kort
           <article className="post-card" key={post.id}>
             <header>
               <h2>
