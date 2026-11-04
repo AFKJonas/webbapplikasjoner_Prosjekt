@@ -37,3 +37,22 @@ Hovedflyten:
 4. Profil og admin: /Profile: viser kontoopplysninger, /Admin: viser alle brukere på appen og er kun relevant for de med rolle admin.
 5. Ikke innlogget sendes til /Login
 
+
+Hvor ligger hva
+
+Ruter -> src/worker.tsx
+
+API-endepunkt GET/api/v1/games -> src/app/api/games.ts
+
+Auth-endepunkter /api/auth/ -> src/auth/auth.ts
+
+Sider -> src/app/pages/(Layout, Login, forum, Games, Profile).
+
+Komponenter -> src/app/components/(Layout, Login, Forum, Games, Profile)
+
+Innlogget bruker i klienten -> src/app/context/AuthProvider.tsx
+
+Server actions (opprett og slett innlegg) -> src/app/actions/postActions.ts
+
+Datalag:skjema -> src/db/schema/schema.ts (/users, sessions, accounts, posts)
+
