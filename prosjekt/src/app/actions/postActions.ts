@@ -1,7 +1,8 @@
 "use server";
 
 import { requestInfo } from "rwsdk/worker";
-import { insertPost, getPostById, deletePostById } from "@/repositories/postRepository";
+import { insertPost, getPostById, deletePostById, updatePostById, } from "@/repositories/postRepository";
+
 
 // Autorisasjonssjekken skjer her på serveren, ikke i nettleseren
 function requireUser() {
@@ -32,4 +33,28 @@ export async function deletePostAction(postId: string) {
   }
 
   await deletePostById(postId);
+}
+
+
+export async function updatePostAction(
+  postId: string,
+  title: string,
+  description: string
+) {
+  const user = requireUser();
+  const post = await getPostById(postId);
+
+  if (!post) {
+    throw new Error("Posten finnes ikke");
+  }
+
+  if (user.role !== "admin" && user.id !== post.authorId) {
+    throw new Error("Du har ikke tilgang til å redigere denne posten");
+  }
+
+  if (!title.trim() || !description.trim()) {
+    throw new Error("Tittel og beskrivelse må fylles ut");
+  }
+
+  return updatePostById(postId, title.trim(), description.trim());
 }

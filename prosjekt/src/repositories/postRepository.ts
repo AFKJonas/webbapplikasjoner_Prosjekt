@@ -45,3 +45,13 @@ export async function insertPost(title: string, description: string, authorId: s
 export async function deletePostById(id: string) {
   await db.delete(posts).where(eq(posts.id, id));
 }
+
+export async function updatePostById(
+  id: string,
+  title: string,
+  description: string
+) {
+  await db.update(posts).set({title,description,}).where(eq(posts.id, id));
+
+  return getPostById(id);
+}
