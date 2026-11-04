@@ -9,13 +9,13 @@ if (!env.BETTER_AUTH_SECRET) {
   throw new Error("BETTER_AUTH_SECRET er ikke satt i .dev.vars");
 }
 
-export const auth = betterAuth({
+export const auth = betterAuth({ // koblingen mellom better-auth og drizzleAdapter som gjør at vi kan bruke better-auth med vår database
   database: drizzleAdapter(db, {
     provider: "sqlite",
     schema: { user: users, session: sessions, account: accounts},
   }),
-  baseURL: env.BETTER_AUTH_URL,
-  secret: env.BETTER_AUTH_SECRET,
+  baseURL: env.BETTER_AUTH_URL, // URLen til better-auth som er satt i .dev.vars
+  secret: env.BETTER_AUTH_SECRET, // Hemmeligheten som brukes til å signere session cookies, som er satt i .dev.vars
 
   advanced: { database: { validateSchema: false } }, 
 
@@ -37,9 +37,9 @@ export const auth = betterAuth({
   },
 
   session: {
-    expiresIn: 60 * 60 * 24 * 7,
-    updateAge: 60 * 60 * 24,
+    expiresIn: 60 * 60 * 24 * 7, // Session utløper etter 7 dager
+    updateAge: 60 * 60 * 24, // Session oppdateres etter 1 dag
   },
 });
 
-export type Session = typeof auth.$Infer.Session;
+export type Session = typeof auth.$Infer.Session; // Type for session som brukes i appen

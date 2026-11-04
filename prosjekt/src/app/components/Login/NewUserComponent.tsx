@@ -11,7 +11,8 @@ export type NewUserInformation = {
     password: string;
     role: "user" | "admin";
 }
-
+//Her defineres en type NewUserInformation som representerer informasjonen som trengs for å opprette en ny bruker. 
+//Den inkluderer brukernavn, Steam-ID, e-post, passord og rolle:(enten det er "user" eller "admin").
 export interface NewUserInformationProps {
     onSubmit: (NewUserprops: NewUserInformation) => void;
 }
@@ -48,6 +49,10 @@ export function NewUserComponent({onSubmit}: NewUserInformationProps) {
     setRole(event.target.value as "user" | "admin");
     };
 
+//Her under er en funksjon som håndterer innsending av skjemaet. 
+//Den tar inn en event som parameter, og bruker preventDefault for å hindre at siden lastes på nytt. 
+//Hvis noen av feltene er tomme, vises et vindu til brukeren som sier "Alle feltene må fylles ut for å kunne opprette en ny bruker".
+//Etterpå kalles onSubmit funksjonen med RegisterResult som parameter, og inputfeltene tømmes ved å sette alle state-variablene til tomme strenger, og role settes til "user".
     const handleFormSubmit = (event: ChangeEvent) => {
         event.preventDefault();
         if (username === "" || steamId === "" || email === "" || password === "") {

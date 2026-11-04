@@ -4,6 +4,7 @@ import { LoginComponent } from "./LoginComponent";
 import { authClient } from "@/auth/auth-client";
 
 export function LoginForm() {
+//Denne komponenten viser et skjema for innlogging, og håndterer innsending av e-post og passord til authClient.signIn.email.
   return (
     <LoginComponent
       onSubmit={async ({ email, password }) => {

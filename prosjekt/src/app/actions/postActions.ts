@@ -4,15 +4,14 @@ import { requestInfo } from "rwsdk/worker";
 import { insertPost, getPostById, deletePostById, updatePostById, } from "@/repositories/postRepository";
 
 
-// Autorisasjonssjekken skjer her på serveren, ikke i nettleseren
-function requireUser() {
+
+function requireUser() { // Funksjon som krever at brukeren er logget inn for å utføre en handling, kaster en feil hvis brukeren ikke er logget inn
   const user = requestInfo.ctx.user;
   if (!user) throw new Error("Du må være innlogget");
   return user;
 }
 
-// Opprett: må være innlogget
-export async function createPostAction(title: string, description: string) {
+export async function createPostAction(title: string, description: string) { // actions ved opprettelse av post, sjekker at brukeren er innlogget og at tittel og beskrivelse ikke er tomme
   const user = requireUser();
 
   if (!title.trim() || !description.trim()) {
@@ -22,8 +21,8 @@ export async function createPostAction(title: string, description: string) {
   return insertPost(title.trim(), description.trim(), user.id);
 }
 
-// Slett: må være forfatteren eller admin
-export async function deletePostAction(postId: string) {
+
+export async function deletePostAction(postId: string) { // actions ved sletting av post, sjekker at brukeren er innlogget og at brukeren har tilgang til å slette posten (enten admin eller forfatter)
   const user = requireUser();
   const post = await getPostById(postId);
 
@@ -36,7 +35,7 @@ export async function deletePostAction(postId: string) {
 }
 
 
-export async function updatePostAction(
+export async function updatePostAction( // actions ved oppdatering av post, sjekker at brukeren er innlogget og at brukeren har tilgang til å redigere posten (enten admin eller forfatter)
   postId: string,
   title: string,
   description: string

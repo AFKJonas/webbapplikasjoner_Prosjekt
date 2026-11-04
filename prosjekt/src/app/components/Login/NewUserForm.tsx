@@ -3,6 +3,8 @@
 import { NewUserComponent } from "./NewUserComponent";
 import { authClient } from "@/auth/auth-client";
 
+//Denne komponenten viser et skjema for å opprette en ny bruker, og 
+//håndterer innsending av brukernavn, Steam-ID, e-post, passord og rolle til authClient.signUp.email.
 export function NewUserForm() {
   return (
     <NewUserComponent

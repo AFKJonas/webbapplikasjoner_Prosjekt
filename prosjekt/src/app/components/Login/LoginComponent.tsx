@@ -1,19 +1,14 @@
 "use client"
-
 import { useState, ChangeEvent } from "react"
 
-
+//her vil vi lage en komponent som tar inn epost og passord, og sender det videre til loginForm.tsx
     export type LoginInformation = {
         email: string;
         password: string;
     }
-
     export interface LoginInformationProps {
         onSubmit: (Loginprops: LoginInformation) => void;
     }
-
-
-
     
 export function LoginComponent ({onSubmit}: LoginInformationProps) {
 
@@ -24,7 +19,8 @@ export function LoginComponent ({onSubmit}: LoginInformationProps) {
       email: email,
       password: password
     }
-
+// Her er det to funksjoner som oppdaterer email og passord når brukeren skriver inn i inputfeltene. 
+// Disse funksjonene tar inn en event som parameter, og bruker setEmail og setPassword for å oppdatere state med verdien fra inputfeltet.
     const updateEmail: React.ChangeEventHandler<HTMLInputElement, HTMLInputElement> = (event) => {
             setEmail(event.target.value);
     };
@@ -32,6 +28,10 @@ export function LoginComponent ({onSubmit}: LoginInformationProps) {
             setPassword(event.target.value);        
     };
 
+//her under er en funksjon som håndterer innsending av skjemaet. 
+//Den tar inn en event som parameter, og bruker preventDefault for å hindre at siden lastes på nytt. 
+//Hvis email eller password er tomme, vises et vindu til brukeren som sier "Alle feltene må fylles ut for å kunne logge inn".
+//Når onSubmit funksjonen kalles med LoginResult som parameter, blir inputfeltene tømt ved å sette email og password til tomme strenger.
     const handleForm = (event: ChangeEvent) => {
         event.preventDefault();
         if (email === "" || password === "") {
@@ -42,28 +42,6 @@ export function LoginComponent ({onSubmit}: LoginInformationProps) {
         setEmail("");
         setPassword("");
       }
-
-    // Lag en const som updateEmail og oppdaterer email basert på et event, sett input som et event.target som et HTMLInputElement 
-    // videre inni const en if statement som sjekker om input er tomt og hvis tomt: setemail (staten) til (input.value)
-      
-
-
-    //Gjør det samme her med å lage en updatePassord og oppdater passord basert på et event, og sett det som skjer (event) som en variabel input og ta imot et event.target
-    // Gjør en if sjekk som sjekker om passord er tomt, hvis tomt, setpassword lik hva som blir skrevet inn
-
-    // Når du har gjort dette så har du to konstanter som oppdaterer og lagrer i en state basert på input
-
-
-
-
-    // tilslutt så kan det være lurt å lage en konstant som resetter verdiene lagret i state når en bruker vil gjør det på nytt.
-    // kall denne f.eks. handleForm og sjekk om email og passord ikke er tomme hvis ikke tomme, send de inn. deretter reset staten med
-    // setemail ("")
-    // setpassword("") 
-
-    
-
-
 
     
     return (
