@@ -56,3 +56,19 @@ Server actions (opprett og slett innlegg) -> src/app/actions/postActions.ts
 
 Datalag:skjema -> src/db/schema/schema.ts (/users, sessions, accounts, posts)
 
+Datalag: databasetilkobling -> src/db/index.ts (Drizzle mot D1-bindingen (webapplikasjoner_db))
+
+Datalag: spørringer og eksterne kall -> src/repositories/(postRepository.ts, gamesApi.ts)
+
+Forretningslogikk: -> src/services/gameService.ts
+
+Migrasjoer: -> drizzle/
+
+Tilgangskontroll: -> src/auth/guards.ts(requireAuth, requireAdmin) og src/auth/middleware.ts
+
+Sikkerhetshoder: -> src/app/headers.ts
+
+Tester: -> tests/unit/ og tests/integration/
+
+Konfig: -> wrangler.jsonc, vite.config.mts, vitest.config.mts, drizzle.config.ts
+
