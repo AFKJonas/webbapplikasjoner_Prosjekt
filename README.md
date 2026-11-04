@@ -3,8 +3,8 @@
 Spill forum
 -------------
 
-Spill forum er en webapp der brukere har mulighet for å logge inn med en Steam-ID, videre se eget Steam-bibliotek sortert etter spilletid. Brukerne har tilgang til et felles forum for hvert spill der ulike diskusjoer kan diskuteres.
-Brukere innlegg og innlogging lagres i et database, derimot blir spilldata hentet live fra Steam sitt API. Appen kjøres på Cloudflare workers og er bygget med RedwoodSDK (React Server Components, better-auth og Drizzle.)
+Spill forum er en webapp der brukere har mulighet for å logge inn med en Steam-ID, videre se eget Steam-bibliotek sortert etter spilletid. Brukerne har tilgang til et felles forum for hvert spill der ulike diskusjoner kan diskuteres.
+Brukerenes innlegg og innlogging lagres i et database, derimot blir spilldata hentet live fra Steam sitt API. Appen kjøres på Cloudflare workers og er bygget med RedwoodSDK (React Server Components, better-auth og Drizzle.)
 
 Kom i gang, ved installasjon av prosjektet skal følgende kommandoer kjøes i terminalen:
 

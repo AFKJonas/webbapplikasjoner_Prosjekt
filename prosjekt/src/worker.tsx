@@ -24,7 +24,7 @@ export default defineApp([
   route("/api/auth/*", ({ request }) => auth.handler(request)), 
   authMiddleware,
 
-  route("/api/games", { get: getMyGames}),
+  route("/api/v1/games", { get: getMyGames}),
 
   render(Document, [
     layout(AuthLayout, [
