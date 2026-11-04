@@ -36,7 +36,7 @@
     "react": "19.2.8",
     "react-dom": "19.2.8",
     "react-server-dom-webpack": "19.2.8",
-    "rwsdk": "1.7.3",
+    "rwsdk": "1.7.5",
     "rwsdk-community": "^0.1.2",
     "zod": "^4.6.7"
   },
