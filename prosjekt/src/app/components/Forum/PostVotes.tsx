@@ -3,7 +3,7 @@
 import { useState } from "react";
 import {faThumbsUp, faThumbsDown,faPen,} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { deletePostAction } from "@/app/actions/postActions";
+import { deletePostAction, updatePostAction, } from "@/app/actions/postActions";
 
 type PostVotesProps = {
   postId: string;      
@@ -59,6 +59,17 @@ export function PostVotes({ postId, canDelete,initialLikes,initialDislikes,initi
     }
   }
 
+  async function handleUpdate(event: Parameters<NonNullable<React.ComponentProps<"form">["onSubmit"]>>[0]) {
+    event.preventDefault();
+  
+    try {
+      await updatePostAction(postId, title.trim(), description.trim());
+      window.location.reload();
+    } catch {
+      window.alert("Kunne ikke oppdatere innlegget");
+    }
+  }
+
   return (
     <>
       <footer className="post-actions">
@@ -90,7 +101,7 @@ export function PostVotes({ postId, canDelete,initialLikes,initialDislikes,initi
         <section className="edit-post-form">
           <h2>Rediger innlegg</h2>
   
-          <form onSubmit={(event) => event.preventDefault()}>
+          <form onSubmit={handleUpdate}>
             <label htmlFor="edit-title">Tittel</label>
             <input
               id="edit-title"
@@ -108,13 +119,13 @@ export function PostVotes({ postId, canDelete,initialLikes,initialDislikes,initi
               required
             />
   
-            <div className="edit-post-actions">
-              <button type="submit">Lagre endringer</button>
-  
-              <button type="button" onClick={() => setShowEdit(false)}>
-                Avbryt
-              </button>
-            </div>
+            <section className="edit-post-actions">
+            <button type="submit">Lagre endringer</button>
+
+            <button type="button" onClick={() => setShowEdit(false)}>
+              Avbryt
+            </button>
+          </section>
           </form>
         </section>
       )}
