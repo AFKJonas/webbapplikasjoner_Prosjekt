@@ -18,24 +18,24 @@ type AuthContextType = {
   logout: () => Promise<void>;
 };
 
-const AuthContext = createContext<AuthContextType | null>(null);
+const AuthContext = createContext<AuthContextType | null>(null); // Lager en kontekst for autentisering som kan brukes i hele appen
 
 export function AuthProvider({ children, user }: { children: ReactNode; user: AuthUser | null }) {
   const logout = async () => {
-    await authClient.signOut(); // sletter session og cookie
+    await authClient.signOut(); // sletter session og cookie 
     window.location.href = "/Login";
   };
 
   return (
     <AuthContext
-      value={{ user, isAuthenticated: !!user, isAdmin: user?.role === "admin", logout }}
+      value={{ user, isAuthenticated: !!user, isAdmin: user?.role === "admin", logout }} // Sender inn verdier til konteksten som kan brukes i hele appen
     >
       {children}
     </AuthContext>
   );
 }
 
-export function useAuth() {
+export function useAuth() { // en hook som gjør det enkelt å bruke autentisering i komponenter
   const context = use(AuthContext);
   if (!context) throw new Error("useAuth må brukes inni en AuthProvider");
   return context;
