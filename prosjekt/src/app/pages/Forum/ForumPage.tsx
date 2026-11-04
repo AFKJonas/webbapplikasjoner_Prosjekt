@@ -15,10 +15,15 @@ export function ForumPage({ initialPosts }: { initialPosts: Post[] }) {
   const [forumPosts, setForumPosts] = useState<Post[]>(initialPosts);
   const [showNewPost, setShowNewPost] = useState(false);
 
+
+  //håndterer opprettelsen av et nytt foruminnlegg
   async function handleCreatePost(title: string, description: string) {
     try {
+      //oppretter innlegget gjennom en server action
       const newPost = await createPostAction(title, description);
+      //legger det nye innlegget øverst i listen
       setForumPosts((currentPosts) => [newPost, ...currentPosts]);
+      //lukker skjemaet etter at innlegget er opprettet
       setShowNewPost(false);
     } catch {
       window.alert("Kunne ikke opprette posten");
@@ -75,12 +80,13 @@ export function ForumPage({ initialPosts }: { initialPosts: Post[] }) {
       </section>
 
       
-      
+      {/*viser popup-vinduet for å opprette en ny post */}
       {showNewPost && (
         <section
           className="modal-overlay"
           onClick={() => setShowNewPost(false)}
         >
+          {/*hindrer at pop-vinduet lukkes når man klikker inni det */}
           <section
             className="modal-content"
             onClick={(event) => event.stopPropagation()}

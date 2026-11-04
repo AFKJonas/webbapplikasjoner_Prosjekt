@@ -10,11 +10,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export async function PostPage({ request, ctx }: RequestInfo) {
   const url = new URL(request.url);
   const postId = url.searchParams.get("id");
+  //henter innlegget fra databasen hvis en id finnes
   const post = postId ? await getPostById(postId) : null;
 
   
     
-
+  //viser en feilmelding hvis innlegget ikke finnes
   if (!post) {
     return (
       <main className="post-page">
