@@ -21,10 +21,10 @@ export type AppContext = {};
 
 export default defineApp([
   setCommonHeaders(),
-  route("/api/auth/*", ({ request }) => auth.handler(request)), 
-  authMiddleware,
+  route("/api/auth/*", ({ request }) => auth.handler(request)), // Route for å håndtere autentisering med better-auth
+  authMiddleware, // Middleware som henter session og user fra better-auth og legger det til i context
 
-  route("/api/v1/games", { get: getMyGames}),
+  route("/api/v1/games", { get: getMyGames}), // Rest API route for å hente spillene til en bruker, utenom autentisering
 
   render(Document, [
     layout(AuthLayout, [

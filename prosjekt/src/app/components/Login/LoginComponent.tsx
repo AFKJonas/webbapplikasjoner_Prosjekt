@@ -43,26 +43,6 @@ export function LoginComponent ({onSubmit}: LoginInformationProps) {
         setPassword("");
       }
 
-    // Lag en const som updateEmail og oppdaterer email basert på et event, sett input som et event.target som et HTMLInputElement 
-    // videre inni const en if statement som sjekker om input er tomt og hvis tomt: setemail (staten) til (input.value)
-      
-
-
-    //Gjør det samme her med å lage en updatePassord og oppdater passord basert på et event, og sett det som skjer (event) som en variabel input og ta imot et event.target
-    // Gjør en if sjekk som sjekker om passord er tomt, hvis tomt, setpassword lik hva som blir skrevet inn
-
-    // Når du har gjort dette så har du to konstanter som oppdaterer og lagrer i en state basert på input
-
-
-
-
-    // tilslutt så kan det være lurt å lage en konstant som resetter verdiene lagret i state når en bruker vil gjør det på nytt.
-    // kall denne f.eks. handleForm og sjekk om email og passord ikke er tomme hvis ikke tomme, send de inn. deretter reset staten med
-    // setemail ("")
-    // setpassword("") 
-
-    
-
 
 
     
