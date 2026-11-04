@@ -4,5 +4,5 @@ export async function getGamesForUser(steamId: string) {
   const data = await getGames(steamId);
   const games = data.response.games ?? []; // Steam gir ingen games hvis profilen er privat
 
-  return [...games].sort((a, b) => b.playtime_forever - a.playtime_forever);
+  return [...games].sort((a, b) => b.playtime_forever - a.playtime_forever); // Sorterer spillene etter hvor mye tid som er brukt på dem, fra mest til minst
 }
