@@ -9,4 +9,14 @@ export default defineConfig({
     }),
     redwood(),
   ],
+  environments: {
+    client: {
+      optimizeDeps: {
+        include: [
+          "@fortawesome/react-fontawesome",
+          "@fortawesome/free-solid-svg-icons",
+        ],
+      },
+    },
+  },
 });
