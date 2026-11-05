@@ -13,7 +13,7 @@ Ved installasjon av prosjektet skal følgende kommandoer kjøres i rekkefølge i
 
 Opprett en fil under prosjekt/
 1. kall den .dev.vars
-2. Legg til nødvendige nøkler som er tilsendt
+2.  Legg til nødvendige nøkler som ligger i README dokumentet tilsendt.
 3. Pass på å lagre med "CTRL S"
 
 
