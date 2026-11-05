@@ -12,8 +12,8 @@ Ved installasjon av prosjektet skal følgende kommandoer kjøres i rekkefølge i
 2. pnpm install
 
 Opprett en fil under prosjekt/
-1. kall den .dev.vars.
-2. Legg til nødvendige nøkler som er tilsendt.
+1. kall den .dev.vars
+2. Legg til nødvendige nøkler som er tilsendt
 3. Pass på å lagre med "CTRL S"
 
 
